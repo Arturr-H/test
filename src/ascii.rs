@@ -1,7 +1,7 @@
 use bevy::prelude::*;
 use bevy_rapier2d::prelude::{RigidBody, Collider, GravityScale, LockedAxes};
 
-use crate::TILESIZE;
+use crate::{ TILESIZE, GRAVITY };
 
 pub struct AsciiPlugin;
 pub struct AsciiSheet(Handle<TextureAtlas>);
@@ -54,7 +54,7 @@ pub fn spawn_ascii_sprite(
 
     commands
         .insert(LockedAxes::ROTATION_LOCKED)
-        .insert(GravityScale(0.02))
+        .insert(GravityScale(GRAVITY))
         .id()
 }
 

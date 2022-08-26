@@ -24,7 +24,7 @@ fn create_map(mut commands: Commands, ascii: Res<AsciiSheet>) {
     let file = File::open("assets/map.txt").expect("No map file found");
     let mut tiles = Vec::new();
 
-    
+    /*- Read map content -*/
     for (y, line) in BufReader::new(file).lines().enumerate() {
         if let Ok(line) = line {
             for (x, char) in line.chars().enumerate() {
@@ -33,7 +33,7 @@ fn create_map(mut commands: Commands, ascii: Res<AsciiSheet>) {
                 let collider = Collider::cuboid(TILESIZE / 2.0, TILESIZE / 2.0);
 
                 /*- Create tile -*/
-                let mut tile:Entity;
+                let tile:Entity;
 
                 /*- Only # should have colliders -*/
                 if char == '#' {

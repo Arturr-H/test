@@ -7,7 +7,8 @@
 /*- Constants -*/
 pub const CLEAR: Color = Color::rgb(0.1, 0.1, 0.1);
 pub const RESOLUTION: f32 = 16.0 / 9.0;
-pub const TILESIZE: f32 = 0.1;
+pub(crate) const TILESIZE: f32 = 0.1;
+pub(crate) const GRAVITY : f32 = 0.02;
 
 /*- Imports -*/
 use bevy::{prelude::*, render::{texture::ImageSettings ,camera::ScalingMode}};
