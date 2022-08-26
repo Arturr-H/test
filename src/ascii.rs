@@ -14,7 +14,7 @@ impl Plugin for AsciiPlugin {
 
 
 #[derive(Bundle)]
-struct ExampleBundle {
+struct SpritePhysicsBundle {
     a: RigidBody,
     b: Collider,
 }
@@ -46,7 +46,7 @@ pub fn spawn_ascii_sprite(
     /*- Check if physics is wanted -*/
     if let Some(rb) = rigidbody {
         commands
-            .insert_bundle(ExampleBundle {
+            .insert_bundle(SpritePhysicsBundle {
                 a: rb,
                 b: collider.unwrap()
             });
