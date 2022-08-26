@@ -43,8 +43,7 @@ fn create_map(mut commands: Commands, ascii: Res<AsciiSheet>) {
                         char as usize,
                         Color::rgb(0.9, 0.9, 0.9),
                         Vec3::new(x as f32 * TILESIZE, -(y as f32) * TILESIZE, 800.0),
-                        Some(rigid_body),
-                        Some(collider)
+                        Some((rigid_body, collider)),
                     );
                 }else {
                     tile = spawn_ascii_sprite(
@@ -53,7 +52,7 @@ fn create_map(mut commands: Commands, ascii: Res<AsciiSheet>) {
                         char as usize,
                         Color::rgb(0.9, 0.9, 0.9),
                         Vec3::new(x as f32 * TILESIZE, -(y as f32) * TILESIZE, 800.0),
-                        None, None
+                        None
                     );
                 };
 

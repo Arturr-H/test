@@ -197,8 +197,7 @@ fn spawn_player(
         0, /* index */
         Color::hex("2596be").unwrap(), 
         Vec3::new(2.0*TILESIZE, -2.0*TILESIZE, 900.),
-        Some(rigid_body),
-        Some(collider)
+        Some((rigid_body, collider)),
     );
 
     /*- Insert player -*/

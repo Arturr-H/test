@@ -15,8 +15,8 @@ impl Plugin for AsciiPlugin {
 
 #[derive(Bundle)]
 struct SpritePhysicsBundle {
-    a: RigidBody,
-    b: Collider,
+    rb: RigidBody,
+    cl: Collider,
 }
 
 pub fn spawn_ascii_sprite(
@@ -25,8 +25,7 @@ pub fn spawn_ascii_sprite(
     index: usize,
     color: Color,
     translation: Vec3,
-    rigidbody:Option<RigidBody>,
-    collider:Option<Collider>
+    physics:Option<(RigidBody, Collider)>
 ) -> Entity {
     assert!(index < 256, "Index out of Ascii Range");
 
@@ -43,15 +42,16 @@ pub fn spawn_ascii_sprite(
             ..Default::default()
         });
 
-    /*- Check if physics is wanted -*/
-    if let Some(rb) = rigidbody {
+    /*- Check if physics is enabled -*/
+    if let Some(physics) = physics {
         commands
             .insert_bundle(SpritePhysicsBundle {
-                a: rb,
-                b: collider.unwrap()
+                rb: physics.0,
+                cl: physics.1
             });
     };
 
+    /*- Insert gravity -*/
     commands
         .insert(LockedAxes::ROTATION_LOCKED)
         .insert(GravityScale(GRAVITY))
